@@ -19,6 +19,18 @@ export default defineConfig({
             { text: 'Expenses', link: '/expenses' },
             { text: 'Cashflow items', link: '/cashflow-items' }
           ]
+        },
+        {
+          text: 'Automations',
+          items: [
+            { text: 'Create Invoice Button', link: '/automations/create-invoice-button' },
+            { text: 'Billable Hours Rate Currency', link: '/automations/billable-hours-rate-currency' },
+            { text: 'Billable Projects Set Currency', link: '/automations/billable-projects-set-currency' },
+            { text: 'Cashflow Item Billable Hours', link: '/automations/cashflow-item-billable-hours' },
+            { text: 'Cashflow Item Billed Projects', link: '/automations/cashflow-item-billed-projects' },
+            { text: 'Cashflow Item Expense', link: '/automations/cashflow-item-expense' },
+            { text: 'Cashflow Item Remove', link: '/automations/cashflow-item-remove' }
+          ]
         }
       ]
     },
