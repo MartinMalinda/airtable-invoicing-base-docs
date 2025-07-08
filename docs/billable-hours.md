@@ -2,6 +2,9 @@
 title: Billable hours
 outline: deep
 ---
+<script setup lang="ts">
+import FieldIcon from './icons/FieldIcon.vue'
+</script>
 
 # Billable hours
 
@@ -12,24 +15,25 @@ Granular work‑log ledger. Each record captures *what* task was done, *for whom
 
 ## Fields
 
-| Field | Type | Key Options / Formula | Notes |
-| ----- | ---- | --------------------- | ----- |
-| **Task** | text (primary) | — | Short description ("API integration", "Sprint planning meeting"). |
-| **Date** | date | Format `l` | Defaults to today; drives weekly / monthly reporting. |
-| **Hours** | duration | Format `h:mm` | Airtable stores seconds under the hood. |
-| **Tags** | multi‑select ▫︎ Meeting ▫︎ Development ▫︎ Research | Categorise time for later analysis. Add more tags freely. | |
-| **Client** | link → [**Clients**](https://airtable.com/appAeUFSMOuOVDfCV/tblLdpbp52Mhjog08) | Single link | Must be set first – triggers default rate & currency lookups. |
-| **Hourly rate (snapshot)** | currency | Copied once from Client on record creation | Changing the Client's rate later won't update old logs. |
-| **Currency** | single‑select ▫︎ EUR ▫︎ CZK ▫︎ USD | Also copied from Client at creation. | |
-| **Billable** | formula | `{Hourly rate} * ({Hours}/3600)` | Shows value in native currency. |
-| **Billable (USD)** | formula | <details><summary>Formula</summary>`IF({Currency}='EUR',{Billable}*1.136,IF({Currency}='USD',{Billable},BLANK()))`</details> | Quick FX conversion for consolidated P&L. |
-| **Invoice** | link → [**Invoices**](https://airtable.com/appAeUFSMOuOVDfCV/tblTqyv2AcNTQJPje) | Single link | Attach the entry once you raise an invoice. |
-| **Invoice Status** | lookup | from Invoice → **Status** | Propagates Draft/Sent/Paid/Overdue. |
-| **Paid** | formula → checkbox | `IF({Invoice Status}='Paid', TRUE(), FALSE())` | Tick auto‑updates when invoice is paid. |
-| **Details** | long text | — | Meeting notes / JIRA ticket link etc. |
-| **Cashflow items** | link → [**Cashflow items**](https://airtable.com/appAeUFSMOuOVDfCV/tblZhFXFFYHJsmCVn) | Multiple links | Back‑references for cash‑flow roll‑up. |
-| **Hourly rate (from Client)** | lookup | from Client → **Hourly rate** | For auditing: shows current values on the Client record. |
-| **Currency (from Client)** | lookup | from Client → **Currency** | For auditing: shows current values on the Client record. |
+| Type                                      | Field                          | Key Options / Formula                                                                                       | Notes                                                         |
+| ----------------------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| <FieldIcon type="singleLineText" />       | **Task**                       | —                                                                                                           | Short description (“API integration”, “Sprint planning meeting”). |
+| <FieldIcon type="date" />                 | **Date**                       | Format `l`                                                                                                  | Defaults to today; drives weekly / monthly reporting.         |
+| <FieldIcon type="duration" />             | **Hours**                      | Format `h:mm`                                                                                               | Airtable stores seconds under the hood.                      |
+| <FieldIcon type="multipleSelects" />      | **Tags**                       | ▫︎ Meeting ▫︎ Development ▫︎ Research                                                                        | Categorise time for later analysis; add more tags freely.     |
+| <FieldIcon type="multipleRecordLinks" />  | **Client**                     | —                                                                                                           | Must be set first – triggers default rate & currency lookups. |
+| <FieldIcon type="currency" />             | **Hourly rate (snapshot)**     | —                                                                                                           | Copied once from Client on record creation; changing the Client’s rate later won’t update old logs. |
+| <FieldIcon type="singleSelect" />         | **Currency**                   | ▫︎ EUR ▫︎ CZK ▫︎ USD                                                                                          | Also copied from Client at creation.                         |
+| <FieldIcon type="formula" />              | **Billable**                   | `{Hourly rate} * ({Hours}/3600)`                                                                            | Shows value in native currency.                              |
+| <FieldIcon type="formula" />              | **Billable (USD)**             | <details><summary>Formula</summary>`IF({Currency}='EUR',{Billable}*1.136,IF({Currency}='USD',{Billable},BLANK()))`</details> | Quick FX conversion for consolidated P&L.                   |
+| <FieldIcon type="multipleRecordLinks" />  | **Invoice**                    | —                                                                                                           | Attach the entry once you raise an invoice.                  |
+| <FieldIcon type="multipleLookupValues" /> | **Invoice Status**             | from Invoice → **Status**                                                                                   | Propagates Draft/Sent/Paid/Overdue.                          |
+| <FieldIcon type="formula" />              | **Paid**                       | `IF({Invoice Status}='Paid', TRUE(), FALSE())`                                                              | Tick auto-updates when invoice is paid.                      |
+| <FieldIcon type="multilineText" />        | **Details**                    | —                                                                                                           | Meeting notes / JIRA ticket link etc.                        |
+| <FieldIcon type="multipleRecordLinks" />  | **Cashflow items**             | —                                                                                                           | Back-references for cash-flow roll-up.                       |
+| <FieldIcon type="multipleLookupValues" /> | **Hourly rate (from Client)**  | Lookup from Client → **Hourly rate**                                                                        | For auditing: shows current value on the Client record.      |
+| <FieldIcon type="multipleLookupValues" /> | **Currency (from Client)**     | Lookup from Client → **Currency**                                                                           | For auditing: shows current value on the Client record.      |
+
 
 ## Relationships
 

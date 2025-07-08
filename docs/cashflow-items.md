@@ -2,6 +2,9 @@
 title: Cashflow items
 outline: deep
 ---
+<script setup lang="ts">
+import FieldIcon from './icons/FieldIcon.vue'
+</script>
 
 # Cashflow items
 
@@ -12,30 +15,31 @@ Unified ledger that normalises **Hours**, **Projects**, and **Expenses** into a 
 
 ## Fields
 
-| Field | Type | Key Options / Formula | Notes |
-| ----- | ---- | --------------------- | ----- |
-| **Name** | formula (primary) | <details><summary>Formula</summary>`IF(Billable hours, Billable hours, IF(Billed projects, Billed projects, Expense))`</details> | Mirrors the linked record's name for quick recognition. |
-| **Type** | formula → single‑select ▫︎ Hours ▫︎ Project ▫︎ Expense | <details><summary>Formula</summary>`IF(Billable hours, 'Hours', IF(Billed projects, 'Project', 'Expense'))`</details> | Evaluates which link field is populated. Drives colour coding in charts. |
-| **Created By** | system | — | Audit trail for manual adds. |
-| **Billable hours** | link → [**Billable hours**](https://airtable.com/appAeUFSMOuOVDfCV/tblBhPqOGFIV86qsb) | Single link | Positive revenue inflow. |
-| **Billed projects** | link → [**Billed projects**](https://airtable.com/appAeUFSMOuOVDfCV/tbl0oXRRiB7Fj1vEl) | Single link | Positive lump‑sum inflow. |
-| **Expense** | link → [**Expenses**](https://airtable.com/appAeUFSMOuOVDfCV/tbl4rs8m2aGUcyH90) | Single link | Negative outflow. |
-| **Date** | formula (date) | <details><summary>Formula</summary>`IF({Date (from Hours)}, {Date (from Hours)}, IF({Date (from Project)}, {Date (from Project)}, {Date (from Expense)}))`</details> | Picks whichever linked record provides a date. |
-| **Currency** | formula → single‑select | <details><summary>Formula</summary>`IF({Currency (from Hours)}, {Currency (from Hours)}, IF({Currency (from Project)}, {Currency (from Project)}, 'USD'))`</details> | Chooses currency from Hours or Project link. Expenses may differ but usually match base currency. |
-| **Amount** | formula (currency) | <details><summary>Formula</summary>`IF(Expense, {Amount (from Expense)} * -1, IF({Billable hours}, {Billable (USD)}, {Price (USD)}))`</details> | Ensures expenses show as **negative**; revenue as positive. Always in USD. |
-| **Months ago** | formula (number) | <details><summary>Formula</summary>`FLOOR(DATETIME_DIFF(TODAY(), Date, 'month'))`</details> | Facilitates cohort / trailing‑12‑month charts. |
-| **Client** | formula (single‑line text) | <details><summary>Formula</summary>`IF({Client (from Hours)}, {Client (from Hours)}, IF({Client (from Project)}, {Client (from Project)}, {Client (from Expense)}))`</details> | Cascades client name from whichever link field is present. |
-| **Date (from Hours)** | lookup | from Billable hours → **Date** | Hidden lookup feeding canonical Date formula. |
-| **Date (from Project)** | lookup | from Billed projects → **Delivery Date** | Hidden lookup feeding canonical Date formula. |
-| **Date (from Expense)** | lookup | from Expense → **Date** | Hidden lookup feeding canonical Date formula. |
-| **Billable (USD)** | lookup | from Billable hours → **Billable (USD)** | Hidden lookup feeding canonical Amount formula. |
-| **Price (USD)** | lookup | from Billed projects → **Price (USD)** | Hidden lookup feeding canonical Amount formula. |
-| **Amount (from Expense)** | lookup | from Expense → **Amount** | Hidden lookup feeding canonical Amount formula. |
-| **Currency (from Hours)** | lookup | from Billable hours → **Currency** | Hidden lookup feeding canonical Currency formula. |
-| **Currency (from Project)** | lookup | from Billed projects → **Currency** | Hidden lookup feeding canonical Currency formula. |
-| **Client (from Hours)** | lookup | from Billable hours → **Client** | Hidden lookup feeding canonical Client formula. |
-| **Client (from Project)** | lookup | from Billed projects → **Client** | Hidden lookup feeding canonical Client formula. |
-| **Client (from Expense)** | lookup | from Expense → **Client** | Hidden lookup feeding canonical Client formula. |
+| Type                                    | Field                        | Key Options / Formula                                                                                                                   | Notes                                                            |
+| --------------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| <FieldIcon type="formula" />            | **Name**                     | <details><summary>Formula</summary>`IF(Billable hours, Billable hours, IF(Billed projects, Billed projects, Expense))`</details>         | Mirrors the linked record’s name for quick recognition.          |
+| <FieldIcon type="formula" />            | **Type**                     | <details><summary>Formula</summary>`IF(Billable hours, 'Hours', IF(Billed projects, 'Project', 'Expense'))`</details>                    | Evaluates which link field is populated; drives colour coding.   |
+| <FieldIcon type="singleLineText" />     | **Created By**               | —                                                                                                                                       | Audit trail for manual adds.                                     |
+| <FieldIcon type="multipleRecordLinks" />| **Billable hours**           | —                                                                                                                                       | Positive revenue inflow.                                         |
+| <FieldIcon type="multipleRecordLinks" />| **Billed projects**          | —                                                                                                                                       | Positive lump-sum inflow.                                        |
+| <FieldIcon type="multipleRecordLinks" />| **Expense**                  | —                                                                                                                                       | Negative outflow.                                                |
+| <FieldIcon type="formula" />            | **Date**                     | <details><summary>Formula</summary>`IF({Date (from Hours)}, {Date (from Hours)}, IF({Date (from Project)}, {Date (from Project)}, {Date (from Expense)}))`</details> | Picks whichever linked record provides a date.                   |
+| <FieldIcon type="formula" />            | **Currency**                 | <details><summary>Formula</summary>`IF({Currency (from Hours)}, {Currency (from Hours)}, IF({Currency (from Project)}, {Currency (from Project)}, 'USD'))`</details>         | Chooses currency from Hours or Project link; defaults USD.       |
+| <FieldIcon type="formula" />            | **Amount**                   | <details><summary>Formula</summary>`IF(Expense, {Amount (from Expense)} * -1, IF({Billable hours}, {Billable (USD)}, {Price (USD)}))`</details>  | Ensures expenses show as negative; revenue as positive (USD).    |
+| <FieldIcon type="formula" />            | **Months ago**               | <details><summary>Formula</summary>`FLOOR(DATETIME_DIFF(TODAY(), Date, 'month'))`</details>                                              | Facilitates cohort / trailing-12-month charts.                   |
+| <FieldIcon type="formula" />            | **Client**                   | <details><summary>Formula</summary>`IF({Client (from Hours)}, {Client (from Hours)}, IF({Client (from Project)}, {Client (from Project)}, {Client (from Expense)}))`</details> | Cascades client name from whichever link field is present.       |
+| <FieldIcon type="multipleLookupValues" /> | **Date (from Hours)**       | —                                                                                                                                       | Hidden lookup feeding canonical Date formula.                    |
+| <FieldIcon type="multipleLookupValues" /> | **Date (from Project)**     | —                                                                                                                                       | Hidden lookup from Billed projects → Delivery Date.              |
+| <FieldIcon type="multipleLookupValues" /> | **Date (from Expense)**     | —                                                                                                                                       | Hidden lookup from Expense → Date.                               |
+| <FieldIcon type="multipleLookupValues" /> | **Billable (USD)**          | —                                                                                                                                       | Hidden lookup feeding canonical Amount formula.                  |
+| <FieldIcon type="multipleLookupValues" /> | **Price (USD)**             | —                                                                                                                                       | Hidden lookup feeding canonical Amount formula.                  |
+| <FieldIcon type="multipleLookupValues" /> | **Amount (from Expense)**   | —                                                                                                                                       | Hidden lookup feeding canonical Amount formula.                  |
+| <FieldIcon type="multipleLookupValues" /> | **Currency (from Hours)**   | —                                                                                                                                       | Hidden lookup feeding canonical Currency formula.                |
+| <FieldIcon type="multipleLookupValues" /> | **Currency (from Project)** | —                                                                                                                                       | Hidden lookup feeding canonical Currency formula.                |
+| <FieldIcon type="multipleLookupValues" /> | **Client (from Hours)**     | —                                                                                                                                       | Hidden lookup feeding canonical Client formula.                  |
+| <FieldIcon type="multipleLookupValues" /> | **Client (from Project)**   | —                                                                                                                                       | Hidden lookup feeding canonical Client formula.                  |
+| <FieldIcon type="multipleLookupValues" /> | **Client (from Expense)**   | —                                                                                                                                       | Hidden lookup feeding canonical Client formula.                  |
+
 
 ## Relationships
 

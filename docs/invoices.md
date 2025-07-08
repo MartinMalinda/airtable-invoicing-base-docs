@@ -2,6 +2,9 @@
 title: Invoices
 outline: deep
 ---
+<script setup lang="ts">
+import FieldIcon from './icons/FieldIcon.vue'
+</script>
 
 # Invoices
 
@@ -12,21 +15,23 @@ Central ledger of every invoice issued to clients. It aggregates billable hours 
 
 ## Fields
 
-| Field | Type | Key Options / Formula | Notes |
-| ----- | ---- | --------------------- | ----- |
-| **Invoice** | formula | `DATESTR({Issue Date}) & ' – ' & {Client}` | Primary field. Combines date + client name → stable human slug. |
-| **Client** | link → [**Clients**](https://airtable.com/appAeUFSMOuOVDfCV/tblLdpbp52Mhjog08) | Single link, inverse field *Invoices* | Choosing a client auto‑pulls currency & hourly rate to linked hours/projects. |
-| **Issue Date** | date | Format: local `l` | Drives payment terms & overdue flagging. |
-| **Status** | single‑select ▫︎ Draft ▫︎ Sent ▫︎ Paid ▫︎ Overdue | Use automations to set Overdue when Sent > 30 d and not Paid. | Controls invoice lifecycle and payment tracking. |
-| **Total** | formula | `{Billable hours (total)} + {Projects (total)}` | Sum of rolled‑up subtotals; currency shown separately. |
-| **Currency** | formula → single‑select | If billable‑hours currency exists → use it else project's. | Ensures mixed totals are rejected. |
-| **Billable hours** | link → [**Billable hours**](https://airtable.com/appAeUFSMOuOVDfCV/tblBhPqOGFIV86qsb) | Multiple links | Attach any work‑log entries to be billed on this invoice. |
-| **Billed projects** | link → [**Billed projects**](https://airtable.com/appAeUFSMOuOVDfCV/tbl0oXRRiB7Fj1vEl) | Multiple links | Attach fixed‑price deliverables. |
-| **Billable hours (total)** | rollup | Rollup → *Hours* field, aggregation `SUM(values)` | Aggregates total billable amount from linked hours. |
-| **Projects (total)** | rollup | Rollup → *Price* field, aggregation `SUM(values)` | Aggregates total amount from linked projects. |
-| **Currency (billable hours)** | lookup | Lookup from linked billable hours | Feeds main Currency formula for consistency checking. |
-| **Currency (projects)** | lookup | Lookup from linked projects | Feeds main Currency formula for consistency checking. |
-| **Cashflow items** | link → [**Cashflow items**](https://airtable.com/appAeUFSMOuOVDfCV/tblCashflowItems) | Multiple links | Links to corresponding cashflow entries for reporting. |
+| Type                                      | Field                                 | Key Options / Formula                                                         | Notes                                                              |
+| ----------------------------------------- | ------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <FieldIcon type="formula" />              | **Invoice**                           | `DATESTR({Issue Date}) & ' – ' & {Client}`                                    | Primary field. Combines date + client name → stable human slug.    |
+| <FieldIcon type="multipleRecordLinks" />  | **Client**                            | Single link, inverse field *Invoices*                                         | Choosing a client auto-pulls currency & hourly rate to linked records. |
+| <FieldIcon type="date" />                 | **Issue Date**                        | Format: local `l`                                                             | Drives payment terms & overdue flagging.                          |
+| <FieldIcon type="singleSelect" />         | **Status**                            | ▫︎ Draft ▫︎ Sent ▫︎ Paid ▫︎ Overdue                                             | Use automations to set Overdue when Sent > 30 days and not Paid; controls invoice lifecycle. |
+| <FieldIcon type="formula" />              | **Total**                             | `{Billable hours (total)} + {Projects (total)}`                                | Sum of rolled-up subtotals; currency shown separately.             |
+| <FieldIcon type="formula" />              | **Currency**                          | If billable-hours currency exists → use it; otherwise use project's           | Ensures mixed-currency totals are rejected.                        |
+| <FieldIcon type="multipleRecordLinks" />  | **Billable hours**                    | —                                                                             | Attach any work-log entries to be billed on this invoice.          |
+| <FieldIcon type="multipleRecordLinks" />  | **Billed projects**                   | —                                                                             | Attach fixed-price deliverables.                                   |
+| <FieldIcon type="rollup" />               | **Billable hours (total)**            | Rollup → *Hours* field, aggregation `SUM(values)`                             | Aggregates total billable amount from linked hours.               |
+| <FieldIcon type="rollup" />               | **Projects (total)**                  | Rollup → *Price* field, aggregation `SUM(values)`                             | Aggregates total amount from linked projects.                      |
+| <FieldIcon type="multipleLookupValues" /> | **Currency (billable hours)**         | Lookup from linked billable hours                                             | Feeds main Currency formula for consistency checking.             |
+| <FieldIcon type="multipleLookupValues" /> | **Currency (projects)**               | Lookup from linked projects                                                   | Feeds main Currency formula for consistency checking.             |
+| <FieldIcon type="multipleRecordLinks" />  | **Cashflow items**                    | —                                                                             | Links to corresponding cashflow entries for reporting.            |
+
+
 
 ## Relationships
 

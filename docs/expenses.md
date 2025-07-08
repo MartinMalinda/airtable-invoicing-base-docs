@@ -2,6 +2,10 @@
 title: Expenses
 outline: deep
 ---
+<script setup lang="ts">
+import FieldIcon from './icons/FieldIcon.vue'
+</script>
+
 
 # Expenses
 
@@ -12,15 +16,16 @@ Captures every company out‑of‑pocket cost—receipts, subscriptions, travel,
 
 ## Fields
 
-| Field | Type | Key Options / Formula | Notes |
-| ----- | ---- | --------------------- | ----- |
-| **Expense ID** | text (primary) | Manual; suggest `YYYYMMDD‑vendor‑seq` | Human‑readable slug that appears on the PDF receipt link. |
-| **Date** | date | Format `l` | Use receipt / invoice date, not payment date. |
-| **Amount** | currency | Precision 2 | Enter **positive** value; cash‑flow layer flips sign. |
-| **Category** | single‑select ▫︎ Office Supplies ▫︎ Travel ▫︎ Meals ▫︎ Utilities ▫︎ Miscellaneous ▫︎ Services | Expand list as needed for reporting granularity. | |
-| **Attachments** | files | Upload PDF or photo of receipt; name files sensibly. | |
-| **Client** | link → [**Clients**](https://airtable.com/appAeUFSMOuOVDfCV/tblLdpbp52Mhjog08) | Single link | Tag expense to a customer for pass‑through or margin analysis. Optional. |
-| **Cashflow items** | link → [**Cashflow items**](https://airtable.com/appAeUFSMOuOVDfCV/tblZhFXFFYHJsmCVn) | Multiple links | Created automatically via script; amount comes in as **negative** for cash analysis. |
+| Type                                      | Field               | Key Options / Formula                                            | Notes                                                                                   |
+| ----------------------------------------- | ------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| <FieldIcon type="singleLineText" />       | **Expense ID**      | Manual; suggest `YYYYMMDD-vendor-seq`                             | Human-readable slug that appears on the PDF receipt link.                               |
+| <FieldIcon type="date" />                 | **Date**            | Format `l`                                                       | Use receipt / invoice date, not payment date.                                          |
+| <FieldIcon type="currency" />             | **Amount**          | Precision 2                                                      | Enter **positive** value; cash-flow layer flips sign.                                  |
+| <FieldIcon type="singleSelect" />         | **Category**        | ▫︎ Office Supplies ▫︎ Travel ▫︎ Meals ▫︎ Utilities ▫︎ Miscellaneous ▫︎ Services | Expand list as needed for reporting granularity.                                        |
+| <FieldIcon type="multipleAttachments" />  | **Attachments**     | —                                                                | Upload PDF or photo of receipt; name files sensibly.                                   |
+| <FieldIcon type="multipleRecordLinks" />  | **Client**          | —                                                                | Tag expense to a customer for pass-through or margin analysis. Optional.               |
+| <FieldIcon type="multipleRecordLinks" />  | **Cashflow items**  | —                                                                | Created automatically via script; amount comes in as **negative** for cash analysis.  |
+
 
 ## Relationships
 

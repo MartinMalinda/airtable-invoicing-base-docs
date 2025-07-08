@@ -2,6 +2,9 @@
 title: Billed projects
 outline: deep
 ---
+<script setup lang="ts">
+import FieldIcon from './icons/FieldIcon.vue'
+</script>
 
 # Billed projects
 
@@ -12,20 +15,21 @@ Tracks fixed‑scope deliverables (websites, audits, research reports) that are 
 
 ## Fields
 
-| Field | Type | Key Options / Formula | Notes |
-| ----- | ---- | --------------------- | ----- |
-| **Name** | text (primary) | — | Short project slug. Combine client + deliverable if helpful ("ACME – SEO audit"). |
-| **Delivery Date** | date | Format `l` | Marks completion milestone; used for revenue recognition & cash‑flow timing. |
-| **Price** | currency | Precision 0 | Enter in **native currency** below. |
-| **Currency** | single‑select ▫︎ EUR ▫︎ CZK ▫︎ USD | Must match the currency used in *Price*. | |
-| **Price (USD)** | formula | <details><summary>Formula</summary>`IF({Currency}='EUR',{Price}*1.136,IF({Currency}='USD',{Price},BLANK()))`</details> | Converts into USD for consolidated reporting. |
-| **Client** | link → [**Clients**](https://airtable.com/appAeUFSMOuOVDfCV/tblLdpbp52Mhjog08) | Single link | Drives currency defaults via lookup; used for grouping dashboards. |
-| **Invoice** | link → [**Invoices**](https://airtable.com/appAeUFSMOuOVDfCV/tblTqyv2AcNTQJPje) | Single link | Attach once the project is billed. |
-| **Invoice Status** | lookup | from Invoice → **Status** | Reflects billing state (Draft / Sent / Paid / Overdue). |
-| **Paid** | formula → checkbox | <details><summary>Formula</summary>`IF(ARRAYJOIN({Invoice Status}, '')='Paid', TRUE(), FALSE())`</details> | Auto‑checks when linked invoice is paid. |
-| **Currency (from Client)** | lookup | from Client → **Currency** | Shows the client's default currency for QA. |
-| **Currency (from Invoice)** | lookup | from Invoice → **Currency** | Ensures invoice uses same money unit. |
-| **Cashflow items** | link → [**Cashflow items**](https://airtable.com/appAeUFSMOuOVDfCV/tblZhFXFFYHJsmCVn) | Multiple links | Auto‑generated via automation after invoice approval. |
+| Type                                      | Field                         | Key Options / Formula                                                                                          | Notes                                                            |
+| ----------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| <FieldIcon type="singleLineText" />       | **Name**                      | —                                                                                                              | Short project slug. Combine client + deliverable if helpful (“ACME – SEO audit”). |
+| <FieldIcon type="date" />                 | **Delivery Date**             | Format `l`                                                                                                     | Marks completion milestone; used for revenue recognition & cash-flow timing. |
+| <FieldIcon type="currency" />             | **Price**                     | Precision 0                                                                                                    | Enter in **native currency** below.                              |
+| <FieldIcon type="singleSelect" />         | **Currency**                  | ▫︎ EUR ▫︎ CZK ▫︎ USD                                                                                            | Must match the currency used in *Price*.                        |
+| <FieldIcon type="formula" />              | **Price (USD)**               | <details><summary>Formula</summary>`IF({Currency}='EUR',{Price}*1.136,IF({Currency}='USD',{Price},BLANK()))`</details> | Converts into USD for consolidated reporting.                    |
+| <FieldIcon type="multipleRecordLinks" />  | **Client**                    | —                                                                                                              | Drives currency defaults via lookup; used for grouping dashboards. |
+| <FieldIcon type="multipleRecordLinks" />  | **Invoice**                   | —                                                                                                              | Attach once the project is billed.                              |
+| <FieldIcon type="multipleLookupValues" /> | **Invoice Status**            | from Invoice → **Status**                                                                                      | Reflects billing state (Draft / Sent / Paid / Overdue).           |
+| <FieldIcon type="formula" />              | **Paid**                      | <details><summary>Formula</summary>`IF(ARRAYJOIN({Invoice Status}, '')='Paid', TRUE(), FALSE())`</details>        | Auto-checks when linked invoice is paid.                        |
+| <FieldIcon type="multipleLookupValues" /> | **Currency (from Client)**    | Lookup from Client → **Currency**                                                                              | Shows the client's default currency for QA.                     |
+| <FieldIcon type="multipleLookupValues" /> | **Currency (from Invoice)**   | Lookup from Invoice → **Currency**                                                                             | Ensures invoice uses same money unit.                           |
+| <FieldIcon type="multipleRecordLinks" />  | **Cashflow items**            | —                                                                                                              | Auto-generated via automation after invoice approval.           |
+
 
 ## Relationships
 
