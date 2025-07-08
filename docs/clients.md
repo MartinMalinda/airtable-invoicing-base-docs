@@ -4,6 +4,7 @@ outline: deep
 ---
 <script setup lang="ts">
 import FieldIcon from './icons/FieldIcon.vue'
+import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 </script>
 
 # Clients
@@ -12,6 +13,8 @@ import FieldIcon from './icons/FieldIcon.vue'
 
 ## Purpose
 Single source of truth for every customer our consultancy serves. Stores contact details, default billing settings (hourly rate & currency), and high-level financial roll-ups (lifetime revenue, unpaid balance). Child records such as billable hours, invoices, projects and expenses all link here.
+
+<ScrollableScreenshot src="/tables/clients.png" />
 
 ## Fields
 
