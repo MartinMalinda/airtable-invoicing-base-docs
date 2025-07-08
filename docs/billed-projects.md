@@ -3,7 +3,8 @@ title: Billed projects
 outline: deep
 ---
 <script setup lang="ts">
-import FieldIcon from './icons/FieldIcon.vue'
+import FieldIcon from './icons/FieldIcon.vue';
+import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 </script>
 
 # Billed projects
@@ -12,6 +13,8 @@ import FieldIcon from './icons/FieldIcon.vue'
 
 ## Purpose
 Tracks fixed‑scope deliverables (websites, audits, research reports) that are billed at a lump‑sum price rather than hourly. Projects can be attached to invoices, rolled into cash‑flow, and analysed alongside time‑based work.
+
+<ScrollableScreenshot src="/tables/billable-projects.png" />
 
 ## Fields
 

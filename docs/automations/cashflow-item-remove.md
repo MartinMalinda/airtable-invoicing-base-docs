@@ -1,6 +1,12 @@
-# Automation · Remove orphaned Cashflow item
+<script setup lang="ts">
+import ScrollableScreenshot from '../components/ScrollableScreenshot.vue';
+</script>
+
+# Automation: Remove orphaned Cashflow item
 
 **Purpose**  If a *Cashflow items* row becomes orphaned—i.e. it no longer links to Hours, Projects **or** Expenses—Airtable automatically deletes it. This keeps the ledger clean when source records are removed or un‑linked.
+
+<ScrollableScreenshot src="/automations/remove-cashflow-item.png" />
 
 ---
 
@@ -16,7 +22,9 @@
 
 ---
 
-## Copy‑paste prompt for Airtable AI Assist
+## Prompt for Airtable Omni
+
+(Quickly create this automation via AI in your base)
 
 ```text
 Create an automation:

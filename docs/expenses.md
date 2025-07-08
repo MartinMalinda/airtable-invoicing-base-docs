@@ -3,7 +3,8 @@ title: Expenses
 outline: deep
 ---
 <script setup lang="ts">
-import FieldIcon from './icons/FieldIcon.vue'
+import FieldIcon from './icons/FieldIcon.vue';
+import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 </script>
 
 
@@ -13,6 +14,8 @@ import FieldIcon from './icons/FieldIcon.vue'
 
 ## Purpose
 Captures every company out‑of‑pocket cost—receipts, subscriptions, travel, services—so we can track profitability by client and feed monthly cash‑flow projections.
+
+<ScrollableScreenshot src="/tables/expenses.png" />
 
 ## Fields
 

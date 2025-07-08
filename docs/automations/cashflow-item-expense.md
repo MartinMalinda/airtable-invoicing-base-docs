@@ -1,4 +1,8 @@
-# Automation · Expenses → Cashflow items
+<script setup lang="ts">
+import ScrollableScreenshot from '../components/ScrollableScreenshot.vue';
+</script>
+
+# Automation: Expenses → Cashflow items
 
 **Purpose**  Whenever an *Expenses* record has no linked *Cashflow item*, Airtable automatically:
 
@@ -6,6 +10,8 @@
 2. **Creates** a matching record in *Cashflow items* and links it back to the expense.
 
 This ensures every cost is captured in the cash-flow ledger instantly—no manual copying and no missed entries.
+
+<ScrollableScreenshot src="/automations/create-cashflow-item-expense.png" />
 
 ---
 

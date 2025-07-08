@@ -3,7 +3,8 @@ title: Invoices
 outline: deep
 ---
 <script setup lang="ts">
-import FieldIcon from './icons/FieldIcon.vue'
+import FieldIcon from './icons/FieldIcon.vue';
+import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 </script>
 
 # Invoices
@@ -12,6 +13,8 @@ import FieldIcon from './icons/FieldIcon.vue'
 
 ## Purpose
 Central ledger of every invoice issued to clients. It aggregates billable hours & fixed‑price projects, tracks status (Draft → Sent → Paid/Overdue), and drives cash‑flow forecasting.
+
+<ScrollableScreenshot src="/tables/invoices.png" />
 
 ## Fields
 

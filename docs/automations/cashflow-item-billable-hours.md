@@ -1,4 +1,8 @@
-# Automation · Billable hours → Cashflow items
+<script setup lang="ts">
+import ScrollableScreenshot from '../components/ScrollableScreenshot.vue';
+</script>
+
+# Automation: Billable hours → Cashflow items
 
 **Purpose**
 Whenever a *Billable hours* record gains a client but still has no linked *Cashflow item*, Airtable automatically:
@@ -8,9 +12,13 @@ Whenever a *Billable hours* record gains a client but still has no linked *Cashf
 
 This ensures every billable time log is instantly represented in the cash‑flow ledger—no manual copying and no duplicates.
 
+<ScrollableScreenshot src="/automations/create-cashflow-item-billable-hour.png" />
+
 ---
 
-## Copy‑paste prompt for Airtable AI Assist
+## Prompt for Airtable Omni
+
+(Quickly create this automation via AI in your base)
 
 ```text
 Create an automation:

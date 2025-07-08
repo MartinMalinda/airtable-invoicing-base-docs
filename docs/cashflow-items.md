@@ -3,7 +3,8 @@ title: Cashflow items
 outline: deep
 ---
 <script setup lang="ts">
-import FieldIcon from './icons/FieldIcon.vue'
+import FieldIcon from './icons/FieldIcon.vue';
+import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 </script>
 
 # Cashflow items
@@ -12,6 +13,8 @@ import FieldIcon from './icons/FieldIcon.vue'
 
 ## Purpose
 Unified ledger that normalises **Hours**, **Projects**, and **Expenses** into a single table for monthly cash‑flow and P&L dashboards. Each record references exactly *one* underlying source (billable hours entry, fixed‑price project, or expense) and converts it to a common sign (+ revenue / – cost) and currency field.
+
+<ScrollableScreenshot src="/tables/cashflow-items.png" />
 
 ## Fields
 

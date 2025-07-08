@@ -3,7 +3,8 @@ title: Billable hours
 outline: deep
 ---
 <script setup lang="ts">
-import FieldIcon from './icons/FieldIcon.vue'
+import FieldIcon from './icons/FieldIcon.vue';
+import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 </script>
 
 # Billable hours
@@ -12,6 +13,8 @@ import FieldIcon from './icons/FieldIcon.vue'
 
 ## Purpose
 Granular work‑log ledger. Each record captures *what* task was done, *for whom*, *when*, *how long*, and the monetary value to be billed. These entries roll up into invoices and feed revenue analytics & cash‑flow.
+
+<ScrollableScreenshot src="/tables/billable-hours.png" />
 
 ## Fields
 

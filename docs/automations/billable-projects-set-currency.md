@@ -1,6 +1,12 @@
-# Automation · Set Currency on Billed projects
+<script setup lang="ts">
+import ScrollableScreenshot from '../components/ScrollableScreenshot.vue';
+</script>
 
-**Purpose**  Whenever a *Billed projects* record is assigned a **Client**, but its **Currency** field is still empty, Airtable automatically copies in the client’s default currency. This ensures every project record immediately reflects the correct currency without manual selection.
+# Automation: Set Currency on Billed projects
+
+**Purpose**  Whenever a *Billed projects* record is assigned a **Client**, but its **Currency** field is still empty, Airtable automatically copies in the client’s default currency. This ensures every project record immediately reflects the correct currency without manual selection. Instead of a lookup the currency is copied because in the future the client's default currency might change.
+
+<ScrollableScreenshot src="/automations/billable-projects-set-currency.png" />
 
 ---
 
@@ -16,7 +22,9 @@
 
 ---
 
-## Copy‑paste prompt for Airtable AI Assist
+## Prompt for Airtable Omni
+
+(Quickly create this automation via AI in your base)
 
 ```text
 Create an automation:

@@ -1,6 +1,12 @@
-# Automation · Set Hourly rate & Currency on Billable hours
+<script setup lang="ts">
+import ScrollableScreenshot from '../components/ScrollableScreenshot.vue';
+</script>
 
-**Purpose**  Whenever a new *Billable hours* record is assigned a **Client**, but its own **Hourly rate** or **Currency** fields are still empty, Airtable automatically copies in the client’s defaults. This ensures every time log immediately captures the correct billing rate and currency without manual lookup.
+# Automation: Set Hourly rate & Currency on Billable hours
+
+Whenever a new *Billable hours* record is assigned a **Client**, but its own **Hourly rate** or **Currency** fields are still empty, Airtable automatically copies in the client’s defaults. This ensures every time log immediately captures the correct billing rate and currency without manual lookup. This saves a snapshot of the hourly rate at the time of creation so that the hourly rate does not change retrospectively in the future in case the hourly rate changes.
+
+<ScrollableScreenshot src="/automations/billable-hours-set-hourly-rate.png" />
 
 ---
 
@@ -17,7 +23,9 @@
 
 ---
 
-## Copy‑paste prompt for Airtable AI Assist
+## Prompt for Airtable Omni
+
+(Quickly create this automation via AI in your base)
 
 ```text
 Create an automation:

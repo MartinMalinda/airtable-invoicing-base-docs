@@ -1,4 +1,8 @@
-# Automation · Create Invoice via Button
+<script setup lang="ts">
+import ScrollableScreenshot from '../components/ScrollableScreenshot.vue';
+</script>
+
+# Automation: Create Invoice via Button
 
 **Purpose**  Streamlines invoicing: when you click the **Generate Invoice** button on a **Clients** record, Airtable:
 
@@ -7,9 +11,13 @@
 
 This gives a single-click workflow to package up every outstanding deliverable and work log into a fresh invoice.
 
+<ScrollableScreenshot src="/automations/create-invoice-button.png" />
+
 ---
 
-## Copy‑paste prompt for Airtable AI Assist
+## Prompt for Airtable Omni
+
+(Quickly create this automation via AI in your base)
 
 ```text
 Create an automation:

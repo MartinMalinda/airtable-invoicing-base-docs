@@ -1,4 +1,8 @@
-# Automation · Billed projects → Cashflow items
+<script setup lang="ts">
+import ScrollableScreenshot from '../components/ScrollableScreenshot.vue';
+</script>
+
+# Automation: Billed projects → Cashflow items
 
 **Purpose**  Whenever a *Billed projects* record has a **Client** but no linked **Cashflow item**, Airtable automatically:
 
@@ -7,9 +11,13 @@
 
 This ensures every fixed‑price deliverable instantly shows up in the cash‑flow ledger—no manual copying, no duplicates.
 
+<ScrollableScreenshot src="/automations/create-cashflow-item-billable-project.png" />
+
 ---
 
-## Copy‑paste prompt for Airtable AI Assist
+## Prompt for Airtable Omni
+
+(Quickly create this automation via AI in your base)
 
 ```text
 Create an automation:
