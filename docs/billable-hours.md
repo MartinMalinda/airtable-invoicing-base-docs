@@ -14,7 +14,8 @@ import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 ## Purpose
 Granular work‑log ledger. Each record captures *what* task was done, *for whom*, *when*, *how long*, and the monetary value to be billed. These entries roll up into invoices and feed revenue analytics & cash‑flow.
 
-<ScrollableScreenshot src="/tables/billable-hours.png" />
+<!-- <ScrollableScreenshot src="/tables/billable-hours.png" /> -->
+<iframe class="airtable-embed" src="https://airtable.com/embed/appAeUFSMOuOVDfCV/shrhgQFaXDE48Lu4o" frameborder="0" onmousewheel="" width="100%" height="230" style="background: transparent; border: 1px solid #ccc;"></iframe>
 
 ## Fields
 

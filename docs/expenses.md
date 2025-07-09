@@ -15,7 +15,8 @@ import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 ## Purpose
 Captures every company out‑of‑pocket cost—receipts, subscriptions, travel, services—so we can track profitability by client and feed monthly cash‑flow projections.
 
-<ScrollableScreenshot src="/tables/expenses.png" />
+<!-- <ScrollableScreenshot src="/tables/expenses.png" /> -->
+<iframe class="airtable-embed" src="https://airtable.com/embed/appAeUFSMOuOVDfCV/shrXI4150y0dF7Wzj" frameborder="0" onmousewheel="" width="100%" height="260" style="background: transparent; border: 1px solid #ccc;"></iframe>
 
 ## Fields
 
@@ -34,8 +35,8 @@ Captures every company out‑of‑pocket cost—receipts, subscriptions, travel,
 
 ```mermaid
 classDiagram
-  Expenses --> "0..1" Clients : "belongs to"
-  Expenses --> "0..1" Cashflow_items : "reflected in"
+  Expenses --> "1" Clients : "belongs to"
+  Expenses --> "1" Cashflow_items : "reflected in"
 ```
 
 - **[Clients](https://airtable.com/appAeUFSMOuOVDfCV/tblLdpbp52Mhjog08)** (linked via *Client*)
@@ -43,11 +44,9 @@ classDiagram
 
 ## Gotchas
 
-* **Always attach the receipt**—auditors & VAT reclaim need backup.
 * **Positive vs negative**: keep *Amount* positive; downstream formula in Cashflow items multiplies by ‑1 so expenses appear as outflows.
 * **Categorise consistently**; dashboards rely on Category for cost‑centre charts. Create new options sparingly.
 * **Client link is optional**: Link only if the cost is project‑specific; leave blank for overheads.
-* **Duplicate check**: When importing bank CSV, filter on *Expense ID* or *Date + Amount* to avoid double‑entry.
 * Large file uploads (>5 MB) slow sync—compress images before attaching.
 
 ## Calculated & AI fields

@@ -14,7 +14,8 @@ import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 ## Purpose
 Unified ledger that normalises **Hours**, **Projects**, and **Expenses** into a single table for monthly cash‑flow and P&L dashboards. Each record references exactly *one* underlying source (billable hours entry, fixed‑price project, or expense) and converts it to a common sign (+ revenue / – cost) and currency field.
 
-<ScrollableScreenshot src="/tables/cashflow-items.png" />
+<!-- <ScrollableScreenshot src="/tables/cashflow-items.png" /> -->
+<iframe class="airtable-embed" src="https://airtable.com/embed/appAeUFSMOuOVDfCV/shrdnWIga8fl4tzT8" frameborder="0" onmousewheel="" width="100%" height="490" style="background: transparent; border: 1px solid #ccc;"></iframe>
 
 ## Fields
 

@@ -14,7 +14,8 @@ import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 ## Purpose
 Single source of truth for every customer our consultancy serves. Stores contact details, default billing settings (hourly rate & currency), and high-level financial roll-ups (lifetime revenue, unpaid balance). Child records such as billable hours, invoices, projects and expenses all link here.
 
-<ScrollableScreenshot src="/tables/clients.png" />
+<!-- <ScrollableScreenshot src="/tables/clients.png" /> -->
+<iframe class="airtable-embed" src="https://airtable.com/embed/appAeUFSMOuOVDfCV/shr8BRqZUyjDbDO5g" frameborder="0" onmousewheel="" width="100%" height="325" style="background: transparent; border: 1px solid #ccc;"></iframe>
 
 ## Fields
 

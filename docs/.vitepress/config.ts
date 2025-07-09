@@ -3,7 +3,7 @@ import { withMermaid } from "vitepress-plugin-mermaid";
 
 export default withMermaid(
   defineConfig({
-    title: "Airtable Base Docs",
+    title: "Airtable Invoicing Base",
     description:
       "Data dictionary & developer guide for the consulting‑firm Airtable base",
     lang: "en-US",
@@ -22,6 +22,14 @@ export default withMermaid(
               { text: "Billed projects", link: "/billed-projects" },
               { text: "Expenses", link: "/expenses" },
               { text: "Cashflow items", link: "/cashflow-items" },
+            ],
+          },
+          {
+            text: "Interfaces",
+            items: [
+              { text: "Clients", link: "/interfaces/clients-internal" },
+              { text: "Invoices", link: "/interfaces/invoices" },
+              { text: "Client Portal", link: "/interfaces/client-portal" },
             ],
           },
           {
@@ -55,14 +63,6 @@ export default withMermaid(
                 text: "Cashflow Item Remove",
                 link: "/automations/cashflow-item-remove",
               },
-            ],
-          },
-          {
-            text: "Interfaces",
-            items: [
-              { text: "View clients", link: "/interfaces/clients-internal" },
-              { text: "Invoices", link: "/interfaces/invoices" },
-              { text: "Client Portal", link: "/interfaces/client-portal" },
             ],
           },
         ],

@@ -14,7 +14,8 @@ import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 ## Purpose
 Tracks fixed‑scope deliverables (websites, audits, research reports) that are billed at a lump‑sum price rather than hourly. Projects can be attached to invoices, rolled into cash‑flow, and analysed alongside time‑based work.
 
-<ScrollableScreenshot src="/tables/billable-projects.png" />
+<!-- <ScrollableScreenshot src="/tables/billable-projects.png" /> -->
+<iframe class="airtable-embed" src="https://airtable.com/embed/appAeUFSMOuOVDfCV/shrVl1NHBSmC2zd1Q" frameborder="0" onmousewheel="" width="100%" height="260" style="background: transparent; border: 1px solid #ccc;"></iframe>
 
 ## Fields
 
@@ -40,7 +41,7 @@ Tracks fixed‑scope deliverables (websites, audits, research reports) that are 
 classDiagram
   Billed_projects --> "1" Clients : "belongs to"
   Billed_projects --> "0..1" Invoices : "billed on"
-  Billed_projects --> "0..1" Cashflow_items : "reflected in"
+  Billed_projects --> "1" Cashflow_items : "reflected in"
 ```
 
 - **[Clients](https://airtable.com/appAeUFSMOuOVDfCV/tblLdpbp52Mhjog08)** (linked via *Client*)
@@ -51,7 +52,6 @@ classDiagram
 
 * **Enter Price in native currency**; *Price (USD)* is derived, do **not** overwrite it.
 * **Currency mismatch** between Project and Invoice will break rolled‑up totals—ensure they're identical before sending.
-* Linking an Invoice late will retro‑update **Invoice Status** & **Paid**; dashboards refresh within seconds.
 * If a project is split across multiple milestone invoices, duplicate the record or create child line‑items elsewhere; this table assumes one‑invoice per project.
 * FX rate (1 EUR → 1.136 USD) is **static** in the formula. Update periodically or switch to live rates.
 * Deleting an invoice will unlink the project (but does not delete it) → project reverts to "unbilled".

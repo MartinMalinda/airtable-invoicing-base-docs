@@ -14,7 +14,8 @@ import ScrollableScreenshot from './components/ScrollableScreenshot.vue';
 ## Purpose
 Central ledger of every invoice issued to clients. It aggregates billable hours & fixed‑price projects, tracks status (Draft → Sent → Paid/Overdue), and drives cash‑flow forecasting.
 
-<ScrollableScreenshot src="/tables/invoices.png" />
+<!-- <ScrollableScreenshot src="/tables/invoices.png" /> -->
+<iframe class="airtable-embed" src="https://airtable.com/embed/appAeUFSMOuOVDfCV/shr1BF1QXgNZG1X7Y" frameborder="0" onmousewheel="" width="100%" height="180" style="background: transparent; border: 1px solid #ccc;"></iframe>
 
 ## Fields
 
@@ -40,10 +41,9 @@ Central ledger of every invoice issued to clients. It aggregates billable hours 
 
 ```mermaid
 classDiagram
-  Invoices --> "*" Billable_hours : "billable work logs"
-  Invoices --> "*" Billed_projects : "fixed‑price"
-  Invoices --> "1" Clients : "belongs to"
-  Invoices --> "*" Cashflow_items : "financial tracking"
+  Invoices --> "*" Billable_hours : has many
+  Invoices --> "*" Billed_projects : has many
+  Invoices --> "1" Clients : belongs to
 ```
 
 - **[Clients](https://airtable.com/appAeUFSMOuOVDfCV/tblLdpbp52Mhjog08)** (linked via *Client*)
