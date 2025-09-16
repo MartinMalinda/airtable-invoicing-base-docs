@@ -1,3 +1,20 @@
-.VPSocialLink > svg {
-  fill: none !important;
+/* Install button styling */
+.install-button {
+  display: inline-block;
+  font-size: 0.9rem;
+  padding: 0.2em 0.5em;
+  margin-left: 1em;
+  background-color: #dfdfd6;
+  color: black;
+  border-radius: 4px;
+  /*border: 1px solid white;*/
+  text-decoration: none;
+  transition: background-color 0.2s ease;
 }
+/*.install-button:hover {
+  background-color: #006edc;
+}*/
+
+/** {
+  display: none;
+}*/

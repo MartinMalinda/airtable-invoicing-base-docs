@@ -10,6 +10,13 @@ export default withMermaid(
     mermaid: {},
     themeConfig: {
       logo: "/logo.svg",
+      // Top navigation menu
+      nav: [
+        // {
+        //   text: "Install",
+        //   link: "https://airtable.com/addBaseFromShare/appAeUFSMOuOVDfCV/shr3VX8kLpmEqP5Qh?utm_source=airtable_shared_application"
+        // }
+      ],
       sidebar: {
         "/": [
           { text: "Overview", link: "/" },
