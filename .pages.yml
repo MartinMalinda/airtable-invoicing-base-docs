@@ -1,0 +1,136 @@
+# .pages.yml
+
+media:
+  # Uploaded assets land in VitePress' public dir so they’re served at /uploads/*
+  input: public/uploads
+  output: /uploads
+  allowed:
+    - .png
+    - .jpg
+    - .jpeg
+    - .gif
+    - .svg
+    - .webp
+
+content:
+  # -------- Docs (tree of markdown files under docs/) --------
+  - name: docs
+    label: Docs
+    type: collection
+    path: docs
+    format: frontmatter
+    view:
+      layout: tree         # mirrors folder structure
+      primary: title       # which field to show as item label
+      search: true
+      sort:
+        by: title
+        order: asc
+    filename:
+      # keep existing filenames; when creating, auto from title
+      slug: "{slug}"
+      extension: ".md"
+    fields:
+      - name: title
+        label: Title
+        type: text
+        required: true
+      - name: description
+        label: Description
+        type: textarea
+      - name: sidebar
+        label: Sidebar
+        type: select
+        options:
+          - auto
+          - false
+        help: "VitePress frontmatter: 'sidebar: auto' or false"
+      - name: outline
+        label: Outline
+        type: select
+        options:
+          - deep
+          - [2,6]
+          - false
+        help: "VitePress frontmatter: outline depth or false"
+      - name: draft
+        label: Draft
+        type: boolean
+      - name: tags
+        label: Tags
+        type: list
+        of:
+          type: text
+      - name: nav
+        label: Show in Top Nav
+        type: boolean
+        help: "If your theme reads 'nav' from frontmatter"
+      - name: body
+        label: Body
+        type: rich-text
+        target: body        # write below frontmatter in the .md
+
+  # -------- Blog (optional /docs/blog/*) --------
+  - name: blog
+    label: Blog
+    type: collection
+    path: docs/blog
+    format: frontmatter
+    view:
+      layout: list
+      primary: title
+      search: true
+      sort:
+        by: date
+        order: desc
+    filename:
+      pattern: "{date}-{slug}"   # e.g. 2025-09-17-my-post.md
+      extension: ".md"
+    fields:
+      - name: title
+        label: Title
+        type: text
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: author
+        label: Author
+        type: text
+      - name: description
+        label: Summary
+        type: textarea
+      - name: cover
+        label: Cover Image
+        type: image
+      - name: tags
+        label: Tags
+        type: list
+        of:
+          type: text
+      - name: draft
+        label: Draft
+        type: boolean
+      - name: body
+        label: Body
+        type: rich-text
+        target: body
+
+  # -------- Single pages (optional) --------
+  - name: homepage
+    label: Homepage
+    type: file
+    file: docs/index.md
+    format: frontmatter
+    fields:
+      - name: title
+        label: Title
+        type: text
+      - name: description
+        label: Description
+        type: textarea
+      - name: body
+        label: Body
+        type: rich-text
+        target: body
