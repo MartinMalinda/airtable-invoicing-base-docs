@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  //
 import ScrollableScreenshot from '../components/ScrollableScreenshot.vue';
 </script>
 
