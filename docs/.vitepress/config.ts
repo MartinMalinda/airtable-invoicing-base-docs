@@ -20,6 +20,7 @@ export default withMermaid(
       sidebar: {
         "/": [
           { text: "Overview", link: "/" },
+          { text: "TODO", link: "/todo" },
           {
             text: "Tables",
             items: [
